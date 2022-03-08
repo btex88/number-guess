@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Studio Sol Challenge</title>
+    <script src="./data/api.js" defer></script>
+    <script src="./data/numbers-arr.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body class="body">
+    <div class="top_title_container">
+      <span class="top_title">Qual é o número?</span>
+      <div class="top_title_line"></div>
+    </div>
+    <div class="middle_container">
+      <div class="digit_1">
+        <div class="left default_vertical">
+          <div class="segment_b">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_c">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="segment_a">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_d">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_g">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+        </div>
+        <div class="right default_vertical">
+          <div class="segment_e">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_f">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+      </div>
+      <div class="digit_2">
+        <div class="left default_vertical">
+          <div class="segment_b">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_c">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="segment_a">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_d">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_g">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+        </div>
+        <div class="right default_vertical">
+          <div class="segment_e">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_f">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+      </div>
+      <div class="digit_3">
+        <div class="left default_vertical">
+          <div class="segment_b">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_c">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="segment_a">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_d">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+          <div class="segment_g">
+            <div class="segment_triangle translateX"></div>
+            <div class="segment_horizontal_body"></div>
+            <div class="segment_triangle _translateX"></div>
+          </div>
+        </div>
+        <div class="right default_vertical">
+          <div class="segment_e">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+          <div class="segment_f">
+            <div class="segment_triangle translateY"></div>
+            <div class="segment_vertical_body"></div>
+            <div class="segment_triangle _translateY"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom_container">
+      <input id="number_input" type="number" placeholder="Digite o palpite" class="bottom_input" />
+      <button id="send_button" type="button" class="bottom_send_btn">Enviar</button>
+    </div>
+  </body>
+</html>
