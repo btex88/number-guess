@@ -219,6 +219,13 @@
 }
 
 /* Button and input styles */
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .bottom_container {
   align-items: center;
   display: flex;

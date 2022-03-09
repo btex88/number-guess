@@ -30,6 +30,7 @@ const digit2 = document.querySelector('.digit_2');
 const digit3 = document.querySelector('.digit_3');
 const btnElement = document.getElementById('send_button');
 const reloadBtnElement = document.getElementById('reload_button');
+const bottomContainer = document.querySelector('.bottom_container');
 
 function handleAPI() {
   api.get().then((data) => {
@@ -95,6 +96,17 @@ function newMatch() {
   reloadBtnElement.classList.add('transparent');
   handleInputValue(0);
   inputElement.value = '';
+  shouldDisableInputAndBtn(false)
+}
+
+function shouldDisableInputAndBtn(type) {
+  if (type) {
+    bottomContainer.classList.add('disabled');
+    btnElement.disabled = true;
+  } else {
+    bottomContainer.classList.remove('disabled');
+    btnElement.disabled = false;
+  }
 }
 
 function handleRightAnswer() {
@@ -104,13 +116,15 @@ function handleRightAnswer() {
     element.classList.add('green');
   });
   resultMessage.classList.add('equal');
+  bottomContainer.classList.add('disabled');
   reloadBtnElement.classList.remove('transparent');
+  btnElement.disabled = true;
 }
 
 function checkResult() {
-  if (Number(inputElement.value) > result.value) {
+  if (Number(inputElement.value) < result.value) {
     resultMessage.classList.add('greater');
-  } else if (Number(inputElement.value) < result.value) {
+  } else if (Number(inputElement.value) > result.value) {
     resultMessage.classList.add('smaller');
   } else {
     handleRightAnswer();
@@ -148,6 +162,7 @@ function handleError(value) {
     element.classList.add('red');
   });
   resultMessage.classList.add('error');
+  shouldDisableInputAndBtn(false)
 }
 
 // Load this before browser load page
