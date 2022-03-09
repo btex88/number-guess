@@ -120,10 +120,6 @@
   position: relative;
 }
 
-.hide {
-  display: none;
-}
-
 .default_vertical {
   width: auto;
   height: auto;
@@ -260,4 +256,12 @@
   padding: 0.75rem 0.75rem;
   text-transform: uppercase;
   margin: 0 1rem;
+}
+
+.hide {
+  display: none;
+}
+
+.transparent {
+visibility: hidden;
 }

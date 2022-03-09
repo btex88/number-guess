@@ -29,6 +29,15 @@ const inputElement = document.getElementById('number_input');
 const digit2 = document.querySelector('.digit_2');
 const digit3 = document.querySelector('.digit_3');
 const btnElement = document.getElementById('send_button');
+const reloadBtnElement = document.getElementById('reload_button');
+
+function handleAPI() {
+  api.get().then((data) => {
+    data.StatusCode
+      ? handleError(data.StatusCode)
+      : (result.value = data.value);
+  });
+}
 
 // Function to limit the amount of value typed at input field
 function limitInputLength(input) {
@@ -54,10 +63,12 @@ function clearAll() {
   const hiddenElements = document.querySelectorAll('.hide');
   const onElements = document.querySelectorAll('.on');
   const redElements = document.querySelectorAll('.red');
+  const greenElements = document.querySelectorAll('.green');
 
   hiddenElements.forEach((element) => element.classList.remove('hide'));
   onElements.forEach((element) => element.classList.remove('on'));
   redElements.forEach((element) => element.classList.remove('red'));
+  greenElements.forEach((element) => element.classList.remove('green'));
   resultMessage.classList.remove('error');
 }
 
@@ -77,6 +88,15 @@ function handleInputValue(num) {
   numArr.forEach((value, index) => setNumberOn(numbersArr[value], index + 1));
 }
 
+function newMatch() {
+  handleAPI();
+  clearResultMessage();
+  clearAll();
+  reloadBtnElement.classList.add('transparent');
+  handleInputValue(0);
+  inputElement.value = '';
+}
+
 function handleRightAnswer() {
   const allElements = document.querySelectorAll('.on');
   allElements.forEach((element) => {
@@ -84,6 +104,7 @@ function handleRightAnswer() {
     element.classList.add('green');
   });
   resultMessage.classList.add('equal');
+  reloadBtnElement.classList.remove('transparent');
 }
 
 function checkResult() {
@@ -99,6 +120,7 @@ function checkResult() {
 function clearResultMessage() {
   resultMessage.classList.remove('greater');
   resultMessage.classList.remove('smaller');
+  resultMessage.classList.remove('equal');
 }
 
 // Function to handle send button click
@@ -108,12 +130,13 @@ function handleButtonClick() {
   else setNumberOn(numbersArr[0]);
   checkResult();
   inputElement.value = '';
-  console.log(result.value)
+  console.log(result.value);
 }
 
 // Function to add event listeners for button element
 function addEventToButton() {
   btnElement.addEventListener('click', () => handleButtonClick());
+  reloadBtnElement.addEventListener('click', () => newMatch());
 }
 
 // Function to handle error on api request
@@ -131,9 +154,5 @@ function handleError(value) {
 window.onload = () => {
   handleInputValue(0);
   addEventToButton();
-  api.get().then((data) => {
-    data.StatusCode
-      ? handleError(data.StatusCode)
-      : (result.value = data.value);
-  });
+  handleAPI();
 };
