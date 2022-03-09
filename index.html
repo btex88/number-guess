@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,8 +13,6 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <title>Studio Sol Challenge</title>
-    <script src="./data/api.js" defer></script>
-    <script src="./data/numbers-arr.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body class="body">
@@ -22,6 +21,7 @@
       <div class="top_title_line"></div>
     </div>
     <div class="middle_container">
+      <span class="result_message"></span>
       <div class="digit_1">
         <div class="left default_vertical">
           <div class="segment_b">
@@ -151,10 +151,23 @@
           </div>
         </div>
       </div>
+      <button type="button" class="new_match">
+        <img src="./reload.png" alt="reload" class="reload_icon" />
+        Nova Partida
+      </button>
     </div>
     <div class="bottom_container">
-      <input id="number_input" type="number" placeholder="Digite o palpite" class="bottom_input" />
-      <button id="send_button" type="button" class="bottom_send_btn">Enviar</button>
+      <input
+        id="number_input"
+        type="number"
+        placeholder="Digite o palpite"
+        class="bottom_input"
+        onkeydown="limitInputLength(this)"
+        onkeyup="limitInputLength(this)"
+      />
+      <button id="send_button" type="button" class="bottom_send_btn">
+        Enviar
+      </button>
     </div>
   </body>
 </html>
