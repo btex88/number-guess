@@ -97,6 +97,7 @@ function handleInputValue(num) {
   numArr.forEach((value, index) => setNumberOn(numbersArr[value], index + 1));
 }
 
+// Function to reload match
 function newMatch() {
   disableSpoilerButton(true);
   handleAPI();
@@ -105,10 +106,11 @@ function newMatch() {
   reloadBtnElement.classList.add('transparent');
   handleInputValue(0);
   inputElement.value = '';
-  shouldDisableInputAndBtn(false);
+  disableInputAndButton(false);
 }
 
-function shouldDisableInputAndBtn(type) {
+// Function to handle the disable/enable status of input and button
+function disableInputAndButton(type) {
   if (type) {
     bottomContainer.classList.add('disabled');
     btnElement.disabled = type;
@@ -118,6 +120,7 @@ function shouldDisableInputAndBtn(type) {
   }
 }
 
+// Function to handle segments styling when right awnser is submitted
 function handleRightAnswer() {
   const allElements = document.querySelectorAll('.on');
   allElements.forEach((element) => {
@@ -130,6 +133,7 @@ function handleRightAnswer() {
   btnElement.disabled = true;
 }
 
+// Function to check result value against submitted value
 function checkResult() {
   if (Number(inputElement.value) < result.value) {
     resultMessage.classList.add('greater');
@@ -140,6 +144,7 @@ function checkResult() {
   }
 }
 
+// Function to clear messages that appear when a value is submitted
 function clearResultMessage() {
   resultMessage.classList.remove('greater');
   resultMessage.classList.remove('smaller');
@@ -171,7 +176,7 @@ function handleError(value) {
     element.classList.add('red');
   });
   resultMessage.classList.add('error');
-  shouldDisableInputAndBtn(false);
+  disableInputAndButton(false);
 }
 
 // Function to handle result spoiler
@@ -180,6 +185,7 @@ function handleSpoilerClick() {
   disableSpoilerButton(true)
 }
 
+// Function to handle the disable/enable status of spoiler button
 function disableSpoilerButton(type) {
   if (type) {
     spoilerButton.classList.add('disabled');
