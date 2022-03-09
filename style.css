@@ -272,3 +272,18 @@
 .transparent {
 visibility: hidden;
 }
+
+#spoiler {
+  border: none;
+  text-transform: uppercase;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+#spoiler:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}

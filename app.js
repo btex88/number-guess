@@ -1,4 +1,4 @@
-// Constants
+// Array to hold segment patterns for each value. Each index is a pattern match
 const numbersArr = [
   ['a', 'b', 'c', 'e', 'f', 'g'],
   ['e', 'f'],
@@ -12,6 +12,7 @@ const numbersArr = [
   ['a', 'b', 'd', 'e', 'f', 'g'],
 ];
 
+// Object for setting API request structure
 const api = {
   url: 'https://us-central1-ss-devops.cloudfunctions.net/rand?min=1&max=300',
 
@@ -22,8 +23,10 @@ const api = {
       .catch((err) => err),
 };
 
+// Constant to hold fetched value from API
 const result = {};
 
+// Constants for elements that are globally available
 const resultMessage = document.querySelector('.result_message');
 const inputElement = document.getElementById('number_input');
 const digit2 = document.querySelector('.digit_2');
@@ -31,12 +34,17 @@ const digit3 = document.querySelector('.digit_3');
 const btnElement = document.getElementById('send_button');
 const reloadBtnElement = document.getElementById('reload_button');
 const bottomContainer = document.querySelector('.bottom_container');
+const spoilerButton = document.getElementById('spoiler');
 
+// Function to handle API request and error responses
 function handleAPI() {
   api.get().then((data) => {
-    data.StatusCode
-      ? handleError(data.StatusCode)
-      : (result.value = data.value);
+    if (data.StatusCode) {
+      handleError(data.StatusCode)
+    } else {
+      result.value = data.value;
+      disableSpoilerButton(false)
+    }
   });
 }
 
@@ -90,22 +98,23 @@ function handleInputValue(num) {
 }
 
 function newMatch() {
+  disableSpoilerButton(true);
   handleAPI();
   clearResultMessage();
   clearAll();
   reloadBtnElement.classList.add('transparent');
   handleInputValue(0);
   inputElement.value = '';
-  shouldDisableInputAndBtn(false)
+  shouldDisableInputAndBtn(false);
 }
 
 function shouldDisableInputAndBtn(type) {
   if (type) {
     bottomContainer.classList.add('disabled');
-    btnElement.disabled = true;
+    btnElement.disabled = type;
   } else {
     bottomContainer.classList.remove('disabled');
-    btnElement.disabled = false;
+    btnElement.disabled = type;
   }
 }
 
@@ -144,13 +153,13 @@ function handleButtonClick() {
   else setNumberOn(numbersArr[0]);
   checkResult();
   inputElement.value = '';
-  console.log(result.value);
 }
 
 // Function to add event listeners for button element
 function addEventToButton() {
   btnElement.addEventListener('click', () => handleButtonClick());
   reloadBtnElement.addEventListener('click', () => newMatch());
+  spoilerButton.addEventListener('click', () => handleSpoilerClick());
 }
 
 // Function to handle error on api request
@@ -162,11 +171,28 @@ function handleError(value) {
     element.classList.add('red');
   });
   resultMessage.classList.add('error');
-  shouldDisableInputAndBtn(false)
+  shouldDisableInputAndBtn(false);
+}
+
+// Function to handle result spoiler
+function handleSpoilerClick() {
+  handleInputValue(result.value);
+  disableSpoilerButton(true)
+}
+
+function disableSpoilerButton(type) {
+  if (type) {
+    spoilerButton.classList.add('disabled');
+    spoilerButton.disabled = type;
+  } else {
+    spoilerButton.classList.remove('disabled');
+    spoilerButton.disabled = type;
+  }
 }
 
 // Load this before browser load page
 window.onload = () => {
+  disableSpoilerButton(true);
   handleInputValue(0);
   addEventToButton();
   handleAPI();
