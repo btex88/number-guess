@@ -131,6 +131,7 @@ function handleRightAnswer() {
   bottomContainer.classList.add('disabled');
   reloadBtnElement.classList.remove('transparent');
   btnElement.disabled = true;
+  disableSpoilerButton(true);
 }
 
 // Function to check result value against submitted value
@@ -176,7 +177,9 @@ function handleError(value) {
     element.classList.add('red');
   });
   resultMessage.classList.add('error');
-  disableInputAndButton(false);
+  reloadBtnElement.classList.remove('transparent');
+  disableInputAndButton(true);
+  disableSpoilerButton(true);
 }
 
 // Function to handle result spoiler
